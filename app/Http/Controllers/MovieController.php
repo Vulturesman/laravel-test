@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -55,5 +56,15 @@ class MovieController extends Controller
             'movie' => $movie,
             'people' => $people_sorted_by_position
         ]);
+    }
+
+    public function index()
+    {
+        $movies = Movie::orderBy('name')     // FROM `movies` ORDER BY `name` ASC
+            ->where('votes_nr', '>=', 10000) // WHERE `votes_nr` >= 10000
+            ->limit(20)                      // LIMIT 20
+            ->get();                         // SELECT
+
+        return view('movie/index', compact('movies'));
     }
 }
