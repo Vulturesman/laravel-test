@@ -15,8 +15,9 @@
 
 
     <a href="/awards">Awards</a>
-    <a href="/top-rated-movies">Top 50</a>
-    <a href="/top-rated-games">Top 50 games</a>
+    <a href="/top-rated-movies">Top 50 Movies</a>
+    <a href="/top-rated-games">Top 50 Games</a>
+    <a href="/movies/shawshank-redemption">Shawshank</a>
 
     <h3>Just a top 10 list of all times</h3>
     <ul>
