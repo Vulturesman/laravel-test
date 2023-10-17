@@ -11,7 +11,10 @@
 
     <ul>
         @foreach ($movies as $movie)
-        <li>{{ $movie->name }}</li>
+        <li>
+            {{ $movie->name }}
+            (type: {{ $movie->movieType->name }})
+        </li>
         @endforeach
     </ul>
 
