@@ -15,6 +15,18 @@
 
 
     <a href="/awards">Awards</a>
+    <a href="/top-rated-movies">Top 50</a>
+    <a href="/top-rated-games">Top 50 games</a>
+
+    <h3>Just a top 10 list of all times</h3>
+    <ul>
+        <?php foreach ($movies as $movie) : ?>
+            <li>
+                <?= $movie->name ?> (<?= $movie->year ?>)
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
 </body>
 
 </html>
