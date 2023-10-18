@@ -12,8 +12,9 @@
     <ul>
         @foreach ($movies as $movie)
         <li>
-            {{ $movie->name }}
-            (type: {{ $movie->movieType->name }})
+            <h2>{{ $movie->name }}</h2>
+            (type: {{ $movie->movieType->name }}), <br>
+            status: {{ $movie->movieStatus->slug }}, <br>
             genres:
             @foreach ($movie->genres as $genre)
             {{ $genre->name }}

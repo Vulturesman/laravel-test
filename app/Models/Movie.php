@@ -28,4 +28,9 @@ class Movie extends Model
     {
         return $this->belongsToMany(Language::class);
     }
+
+    public function movieStatus()
+    {
+        return $this->belongsTo(MovieStatus::class);
+    }
 }

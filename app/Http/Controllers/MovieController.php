@@ -61,7 +61,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::orderBy('name')     // FROM `movies` ORDER BY `name` ASC
-            ->where('votes_nr', '>=', 10000) // WHERE `votes_nr` >= 10000
+            ->where('votes_nr', '>=', 100000) // WHERE `votes_nr` >= 10000
             ->limit(20)                      // LIMIT 20
             ->get();                         // SELECT
 
