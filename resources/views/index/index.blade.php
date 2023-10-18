@@ -19,6 +19,7 @@
     <a href="/top-rated-games">Top 50 Games</a>
     <a href="/movies/shawshank-redemption">Shawshank</a>
     <a href="/movies">20 movies</a>
+    <a href="/about-us">About Us</a>
 
     <h2>Search for a movie:</h2>
 
