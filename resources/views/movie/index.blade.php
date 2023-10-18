@@ -8,12 +8,29 @@
 </head>
 
 <body>
-
+    <h1>Movie - Index - 20</h1>
     <ul>
         @foreach ($movies as $movie)
         <li>
             {{ $movie->name }}
             (type: {{ $movie->movieType->name }})
+            genres:
+            @foreach ($movie->genres as $genre)
+            {{ $genre->name }}
+            @endforeach
+            <br>
+            <ul>
+                <li>Casting: 
+                    @foreach ($movie->people as $person)
+                    {{ $person->fullname }},
+                    @endforeach   
+                </li>
+            </ul>
+             <ul>
+             @foreach ($movie->languages as $language)
+            <li>{{ $language->name }}</li>
+            @endforeach   
+            </ul>
         </li>
         @endforeach
     </ul>

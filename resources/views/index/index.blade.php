@@ -20,6 +20,13 @@
     <a href="/movies/shawshank-redemption">Shawshank</a>
     <a href="/movies">20 movies</a>
 
+    <h2>Search for a movie:</h2>
+
+    <form action="/search" method="get">
+        <input type="text" name="search">
+        <button>Search</button>
+    </form>
+
     <h3>Just a top 10 list of all times</h3>
     <ul>
         <?php foreach ($movies as $movie) : ?>

@@ -67,4 +67,31 @@ class MovieController extends Controller
 
         return view('movie/index', compact('movies'));
     }
+
+    public function search()
+    {
+        $search_term = $_GET['search'] ?? null;
+
+        if ($search_term) {
+            $results = DB::select("
+                SELECT *
+                FROM `movies`
+                WHERE `name` LIKE ?
+                ORDER BY `name` ASC
+            ", [
+                '%' . $search_term . '%'
+            ]);
+
+            // replaces commented-out code above:
+            // $results = Movie::query()
+            //     ->where('name', 'like', '%' . $search_term . '%')
+            //     ->orderBy('name', 'asc')
+            //     ->get();
+        }
+
+        return view('movies.search', [
+            'search_term' => $search_term,
+            'results' => $results ?? []
+        ]);
+    }
 }
