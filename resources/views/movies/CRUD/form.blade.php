@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add movie</title>
 </head>
 <body>
+
+    @include('components.messages')
 
     @if ($movie->id)
                     {{-- /movies/{{ $movie->id }} --}}
@@ -19,11 +22,11 @@
 
             <label>Name:</label>
             <br>
-            <input name="name" value="{{ $movie->name }}"/>
+            <input name="name" value="{{ old('name', $movie->name) }}"/>
             <br>
             <label>Year:</label>
             <br>
-            <input name="year" value="{{ $movie->year }}"/>
+            <input name="year" value="{{ old('year', $movie->year) }}"/>
 
             <button>Save</button>
         </form>

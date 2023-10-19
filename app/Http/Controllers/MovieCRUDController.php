@@ -35,6 +35,8 @@ class MovieCRUDController extends Controller
         $movie->year = $request->input('year');
         $movie->save();
 
+        session()->flash('success_message', 'The movie was saved in IMDB!');
+
         // return 'The movie was stored to DB';
 
         // we called save method, therefore we have available id
@@ -69,10 +71,19 @@ class MovieCRUDController extends Controller
     public function update(Request $request, string $id)
     {
 
+        $this->validate($request, [
+            'name' => 'required',
+            'year' => 'required|numeric|min:3',
+        ], [
+            'name.required' => 'You have to put the name dumbass!'
+        ]);
+
         $movie = Movie::findOrFail($id);
         $movie->name = $request->input('name');
         $movie->year = $request->input('year');
         $movie->update();
+
+        session()->flash('success_message', 'The movie was updated in IMDB!');
 
         return redirect()->route('movies.edit', $movie->id);
     }
