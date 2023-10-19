@@ -48,4 +48,6 @@ Route::get('/about-us', [AboutController::class, 'aboutUs']);
 // MOVIE CRUD - Laravel Resource Controllers
 
 Route::get('/movies/create', [MovieCRUDController::class, 'create'])->name('movies.create');
-Route::post('movies', [MovieCRUDController::class, 'store'])->name('movies.store');
+Route::post('/movies', [MovieCRUDController::class, 'store'])->name('movies.store');
+Route::get('/movies/{movie}/edit', [MovieCRUDController::class, 'edit'])->whereNumber('mnovie')->name('movies.edit');
+Route::put('/movies/{movie}', [MovieCRUDController::class, 'update'])->whereNumber('mnovie')->name('movies.update');

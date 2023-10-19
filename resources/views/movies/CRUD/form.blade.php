@@ -9,7 +9,7 @@
 <body>
 
     @if ($movie->id)
-        <form action="" method="post">
+        <form action="{{ route('movies.update', $movie->id) }}" method="post">
             @method('put')
     @else
         <form action="{{ route('movies.store') }}" method="post">
@@ -18,11 +18,11 @@
 
             <label>Name:</label>
             <br>
-            <input name="name"/>
+            <input name="name" value="{{ $movie->name }}"/>
             <br>
             <label>Year:</label>
             <br>
-            <input name="year"/>
+            <input name="year" value="{{ $movie->year }}"/>
 
             <button>Save</button>
         </form>

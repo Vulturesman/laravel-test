@@ -50,8 +50,14 @@ class MovieCRUDController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    { {
+            $movie = Movie::findOrFail($id);
+
+            // dd($movie);
+            // check for example 111161
+
+            return view('movies.CRUD.form', compact('movie'));
+        }
     }
 
     /**
@@ -59,7 +65,13 @@ class MovieCRUDController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $movie = Movie::findOrFail($id);
+        $movie->name = $request->input('name');
+        $movie->year = $request->input('year');
+        $movie->update();
+
+        return 'The movie was updated in DB';
     }
 
     /**
