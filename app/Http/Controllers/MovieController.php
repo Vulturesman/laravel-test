@@ -94,4 +94,9 @@ class MovieController extends Controller
             'results' => $results ?? []
         ]);
     }
+
+    // public function method($movie_id)
+    // {
+    //     code in here... getting the pretty url
+    // }
 }
