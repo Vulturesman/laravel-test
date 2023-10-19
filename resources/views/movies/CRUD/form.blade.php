@@ -9,6 +9,7 @@
 <body>
 
     @if ($movie->id)
+                    {{-- /movies/{{ $movie->id }} --}}
         <form action="{{ route('movies.update', $movie->id) }}" method="post">
             @method('put')
     @else

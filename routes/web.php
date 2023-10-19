@@ -45,7 +45,7 @@ Route::get('/about-us', [AboutController::class, 'aboutUs']);
 // Route::put('/movies/{movie}', [MovieController::class, 'update']);
 
 
-// MOVIE CRUD - Laravel Resource Controllers
+// MOVIE CRUD - Laravel Resource Controllers https://laravel.com/docs/10.x/controllers#restful-partial-resource-routes
 
 Route::get('/movies/create', [MovieCRUDController::class, 'create'])->name('movies.create');
 Route::post('/movies', [MovieCRUDController::class, 'store'])->name('movies.store');
