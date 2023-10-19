@@ -30,6 +30,9 @@ class MovieCRUDController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validateMovie($request);
+
         $movie = new Movie();
         $movie->name = $request->input('name');
         $movie->year = $request->input('year');
@@ -70,13 +73,13 @@ class MovieCRUDController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-        $this->validate($request, [
-            'name' => 'required',
-            'year' => 'required|numeric|min:3',
-        ], [
-            'name.required' => 'You have to put the name dumbass!'
-        ]);
+        $this->validateMovie($request);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'year' => 'required|numeric|min:3',
+        // ], [
+        //     'name.required' => 'You have to put the name dumbass!'
+        // ]);
 
         $movie = Movie::findOrFail($id);
         $movie->name = $request->input('name');
@@ -93,6 +96,31 @@ class MovieCRUDController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        session()->flash('success_message', 'The movie was deleted!');
+        return redirect()->route('movies.create');
+    }
+
+    private function validateMovie($request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'year' => 'required|numeric|min:3',
+        ], [
+            'name.required' => 'You have to put the name dumbass!'
+        ]);
     }
 }
+
+
+
+/*
+Routes in routes/web
+
+Route::get('/movies/create', [MovieCRUDController::class, 'create'])->name('movies.create');
+Route::post('/movies', [MovieCRUDController::class, 'store'])->name('movies.store');
+Route::get('/movies/{movie}/edit', [MovieCRUDController::class, 'edit'])->whereNumber('mnovie')->name('movies.edit');
+Route::put('/movies/{movie}', [MovieCRUDController::class, 'update'])->whereNumber('mnovie')->name('movies.update');
+*/

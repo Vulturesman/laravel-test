@@ -30,6 +30,16 @@
 
             <button>Save</button>
         </form>
+
+
+    @if ($movie->id)
+        <form action="{{ route('movies.destroy', $movie->id) }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button>Delete</button>
+        </form>
+    @endif
+
     
 </body>
 </html>

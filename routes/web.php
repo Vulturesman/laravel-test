@@ -51,3 +51,4 @@ Route::get('/movies/create', [MovieCRUDController::class, 'create'])->name('movi
 Route::post('/movies', [MovieCRUDController::class, 'store'])->name('movies.store');
 Route::get('/movies/{movie}/edit', [MovieCRUDController::class, 'edit'])->whereNumber('mnovie')->name('movies.edit');
 Route::put('/movies/{movie}', [MovieCRUDController::class, 'update'])->whereNumber('mnovie')->name('movies.update');
+Route::delete('/movies/{movie}', [MovieCRUDController::class, 'destroy'])->whereNumber('movie')->name('movies.destroy');
